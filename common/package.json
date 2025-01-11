@@ -1,6 +1,6 @@
 {
-  "name": "@100xdevs/medium-common",
-  "version": "1.0.0",
+  "name": "@shub04/medium-common",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

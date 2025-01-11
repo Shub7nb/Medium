@@ -1,5 +1,7 @@
-import { createBlogInput, updateBlogInput } from "shub04/medium-common";
-import { PrismaClient } from "@prisma/client/edge";
+import { createBlogInput, updateBlogInput } from "@shub04/medium-common";
+import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client/edge";
+
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
 import { verify } from "hono/jwt";
@@ -19,7 +21,8 @@ blogRouter.use("/*", async (c, next) => {
     try {
         const user = await verify(authHeader, c.env.JWT_SECRET);
         if (user) {
-            c.set("userId", user.id);
+            
+            c.set("userId", user.id as string);
             await next();
         } else {
             c.status(403);
